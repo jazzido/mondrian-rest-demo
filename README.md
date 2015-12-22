@@ -13,151 +13,41 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
 
   - Download the [DB dump](http://xxxx) — **ACHTUNG**: it's a ~2GB file.
   - Create a DB in your Monet server: `monetdb create oec; monetdb release oec`
-  - Import the dump into your DB: `xzcat oec_dump.sql.kz | mclient -u monetdb -d oec` (this will take a while)
+  - Import the dump into your DB: `xzcat oec_dump.sql.xz | mclient -u monetdb -d oec` (this will take a while)
   - If needed, adjust the connection parameters in `config.ru`
   - Run: `rackup`
 
 ## Example requests
 
+### Metadata
+
 #### `/cubes`
 
 List available cubes
-
-```javascript
-{
-  "cubes": [
-    "Trade Flow"
-  ]
-}
-```
 
 #### `/cubes/Trade%20Flow`
 
 Get the definition of the *Trade Flow* cube.
 
-```javascript
-{
-  "measures": [
-    {
-      "caption": "Exports",
-      "name": "Exports",
-      "annotations": {}
-    },
-    {
-      "caption": "Imports",
-      "name": "Imports",
-      "annotations": {}
-    }
-  ],
-  "name": "Trade Flow",
-  "dimensions": [
-    {
-      "hierarchies": [
-        {
-          "has_all": true,
-          "name": "Year",
-          "levels": [
-            {
-              "caption": "(All)",
-              "name": "(All)"
-            },
-            {
-              "caption": "Year",
-              "name": "Year"
-            }
-          ],
-          "all_member_name": "All Years"
-        }
-      ],
-      "type": "time",
-      "name": "Year",
-      "annotations": {}
-    },
-    {
-      "hierarchies": [
-        {
-          "has_all": true,
-          "name": "Origin Country",
-          "levels": [
-            {
-              "caption": "(All)",
-              "name": "(All)"
-            },
-            {
-              "caption": "Continent",
-              "name": "Continent"
-            },
-            {
-              "caption": "Country",
-              "name": "Country"
-            }
-          ],
-          "all_member_name": "All Origin Countrys"
-        }
-      ],
-      "type": "standard",
-      "name": "Origin Country",
-      "annotations": {}
-    },
-    {
-      "hierarchies": [
-        {
-          "has_all": true,
-          "name": "Destination Country",
-          "levels": [
-            {
-              "caption": "(All)",
-              "name": "(All)"
-            },
-            {
-              "caption": "Continent",
-              "name": "Continent"
-            },
-            {
-              "caption": "Country",
-              "name": "Country"
-            }
-          ],
-          "all_member_name": "All Destination Countrys"
-        }
-      ],
-      "type": "standard",
-      "name": "Destination Country",
-      "annotations": {}
-    },
-    {
-      "hierarchies": [
-        {
-          "has_all": true,
-          "name": "Product",
-          "levels": [
-            {
-              "caption": "(All)",
-              "name": "(All)"
-            },
-            {
-              "caption": "HS2",
-              "name": "HS2"
-            },
-            {
-              "caption": "HS4",
-              "name": "HS4"
-            },
-            {
-              "caption": "HS6",
-              "name": "HS6"
-            }
-          ],
-          "all_member_name": "All Products"
-        }
-      ],
-      "type": "standard",
-      "name": "Product",
-      "annotations": {}
-    }
-  ]
-}
-```
+#### `/cubes/Trade%20Flow/dimensions/Origin%20Country`
+
+Get the definition and members of the *Origin Country* dimension
+
+#### `/cubes/Trade%20Flow/dimensions/Origin%20Country/levels/Country/members/arg`
+
+Get a member of the *Country* level of the *Origin Country* dimension
+
+### Aggregations
+
+#### World's export value, by year (JSON)
+
+`/cubes/Trade%20Flow/aggregate?drilldown[]=Year&measures[]=Exports`
+
+#### Argentina's exports and imports value, by year
+
+`/cubes/Trade%20Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&measures[]=Imports&cut[]=Origin%20Country.South%20America.Argentina`
+
+
 
 ## License
 
