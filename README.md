@@ -39,22 +39,21 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
 
 ### Metadata
 
-#### `/cubes`
+#### Get available cubes
 
-List available cubes
+`/cubes`
 
-#### `/cubes/Trade%20Flow`
+#### Get the definition of the *Trade Flow* cube
 
-Get the definition of the *Trade Flow* cube.
+`/cubes/Trade%20Flow`
 
-#### `/cubes/Trade%20Flow/dimensions/Origin%20Country`
+#### Get the definition and members of the *Origin Country* dimension
 
-Get the definition and members of the *Origin Country* dimension
+`/cubes/Trade%20Flow/dimensions/Origin%20Country`
 
-#### `/cubes/Trade%20Flow/dimensions/Origin%20Country/levels/Country/members/arg`
+#### Get a member of the *Country* level from the *Origin Country* dimension
 
-Get a member of the *Country* level of the *Origin Country* dimension
-
+`/cubes/Trade%20Flow/dimensions/Origin%20Country/levels/Country/members/arg`
 
 ## License
 
