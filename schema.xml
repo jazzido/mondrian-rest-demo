@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="atlas">
+    <Dimension name="Year" type="TimeDimension">
+        <Hierarchy hasAll="true" primaryKey="year">
+            <Table name="years" schema="oec" />
+            <Level column="year" name="Year" levelType="TimeYears" type="Numeric" uniqueMembers="true" />
+        </Hierarchy>
+    </Dimension>
+    <Dimension name="Countries">
+        <Hierarchy hasAll="true" primaryKey="country_id">
+            <Table name="countries" schema="oec" />
+            <Level name="Continent" column="continent_id" nameColumn="continent" uniqueMembers="true" />
+            <Level name="Country" column="country_id" nameColumn="country" uniqueMembers="true" />
+        </Hierarchy>
+    </Dimension>
+    <Dimension name="HS">
+        <Hierarchy hasAll="true" primaryKey="level3">
+            <Table name="hs_levels" schema="oec" />
+            <Level name="HS2" column="level1" nameColumn="level1_name" uniqueMembers="true" />
+            <Level name="HS4" column="level2" nameColumn="level2_name" uniqueMembers="true" />
+            <Level name="HS6" column="level3" nameColumn="level3_name" uniqueMembers="true" />
+        </Hierarchy>
+    </Dimension>
+    <Cube name="Trade Flow">
+        <Table name="trade_flow" schema="oec" />
+        <DimensionUsage name="Year" source="Year" foreignKey="year" />
+        <DimensionUsage name="Origin Country" source="Countries" foreignKey="country_origin" />
+        <DimensionUsage name="Destination Country" source="Countries" foreignKey="country_destination" />
+        <DimensionUsage name="Product" source="HS" foreignKey="product_id" />
+
+        <Measure name="Exports" column="export_value" aggregator="sum" />
+        <Measure name="Imports" column="import_value" aggregator="sum" />
+    </Cube>
+</Schema>
