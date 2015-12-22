@@ -11,13 +11,31 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
 
 ## Installation
 
-  - Download the [DB dump](http://xxxx) — **ACHTUNG**: it's a ~2GB file.
+  - Download the [DB dump](http://xxxx) — **ACHTUNG**: it's a ~1.5GB file.
   - Create a DB in your Monet server: `monetdb create oec; monetdb release oec`
   - Import the dump into your DB: `xzcat oec_dump.sql.xz | mclient -u monetdb -d oec` (this will take a while)
   - If needed, adjust the connection parameters in `config.ru`
   - Run: `rackup`
 
 ## Example requests
+
+### Aggregations
+
+#### World's export value, by year (JSON)
+
+`/cubes/Trade%20Flow/aggregate?drilldown[]=Year&measures[]=Exports`
+
+#### Argentina's exports and imports value, by year (CSV)
+
+`/cubes/Trade%20Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&measures[]=Imports&cut[]=Origin%20Country.South%20America.Argentina`
+
+#### Argentina's exports value to African countries, by year (Excel)
+
+`/cubes/Trade%20Flow/aggregate.xls?drilldown[]=Year&drilldown[]=Destination%20Country&measures[]=Exports&cut[]=Origin%20Country.South%20America.Argentina&cut[]=Destination%20Country.Africa`
+
+#### Total South America's exports of Live Animals to Germany, by year
+
+`/cubes/Trade Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin Country.South America&cut[]=Destination Country.Europe.Germany&cut[]=Product.Live Animals`
 
 ### Metadata
 
@@ -36,17 +54,6 @@ Get the definition and members of the *Origin Country* dimension
 #### `/cubes/Trade%20Flow/dimensions/Origin%20Country/levels/Country/members/arg`
 
 Get a member of the *Country* level of the *Origin Country* dimension
-
-### Aggregations
-
-#### World's export value, by year (JSON)
-
-`/cubes/Trade%20Flow/aggregate?drilldown[]=Year&measures[]=Exports`
-
-#### Argentina's exports and imports value, by year
-
-`/cubes/Trade%20Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&measures[]=Imports&cut[]=Origin%20Country.South%20America.Argentina`
-
 
 
 ## License
