@@ -1,4 +1,4 @@
-# `mondrian-rest` demo project
+# [`mondrian-rest`](https://github.com/jazzido/mondrian-rest) demo project
 
 This is an example project and testbed for [`mondrian-rest`](http://github.com/jazzido/mondrian-rest), a REST endpoint for the OLAP server [Mondrian](http://community.pentaho.com/projects/mondrian/).
 
