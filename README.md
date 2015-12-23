@@ -11,7 +11,7 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
 
 ## Installation
 
-  - Download the [DB dump](http://xxxx) — **ACHTUNG**: it's a ~1.5GB file.
+  - Download the [DB dump](http://mondrian-rest.jazzido.com/oec_dump.sql.xz) — **ACHTUNG**: it's a ~1.3 GB file.
   - Create a DB in your Monet server: `monetdb create oec; monetdb release oec`
   - Import the dump into your DB: `xzcat oec_dump.sql.xz | mclient -u monetdb -d oec` (this will take a while)
   - If needed, adjust the connection parameters in `config.ru`
@@ -27,33 +27,33 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
 
 #### Argentina's exports and imports value, by year (CSV)
 
-`/cubes/Trade%20Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&measures[]=Imports&cut[]=Origin%20Country.South%20America.Argentina`
+[`/cubes/Trade%20Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&measures[]=Imports&cut[]=Origin%20Country.South%20America.Argentina`](http://mondrian-rest.jazzido.com/cubes/Trade%20Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&measures[]=Imports&cut[]=Origin%20Country.South%20America.Argentina)
 
 #### Argentina's exports value to African countries, by year (Excel)
 
-`/cubes/Trade%20Flow/aggregate.xls?drilldown[]=Year&drilldown[]=Destination%20Country&measures[]=Exports&cut[]=Origin%20Country.South%20America.Argentina&cut[]=Destination%20Country.Africa`
+[`/cubes/Trade%20Flow/aggregate.xls?drilldown[]=Year&drilldown[]=Destination%20Country&measures[]=Exports&cut[]=Origin%20Country.South%20America.Argentina&cut[]=Destination%20Country.Africa`](http://mondrian-rest.jazzido.com/cubes/Trade%20Flow/aggregate.xls?drilldown[]=Year&drilldown[]=Destination%20Country&measures[]=Exports&cut[]=Origin%20Country.South%20America.Argentina&cut[]=Destination%20Country.Africa)
 
 #### Total South America's exports of Live Animals to Germany, by year
 
-`/cubes/Trade Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin Country.South America&cut[]=Destination Country.Europe.Germany&cut[]=Product.Live Animals`
+[`/cubes/Trade Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin Country.South America&cut[]=Destination Country.Europe.Germany&cut[]=Product.Live Animals`](http://mondrian-rest.jazzido.com/cubes/Trade Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin Country.South America&cut[]=Destination Country.Europe.Germany&cut[]=Product.Live Animals)
 
 ### Metadata
 
 #### Get available cubes
 
-`/cubes`
+[`/cubes`](http://mondrian-rest.jazzido.com/cubes)
 
 #### Get the definition of the *Trade Flow* cube
 
-`/cubes/Trade%20Flow`
+[`/cubes/Trade%20Flow`](http://mondrian-rest.jazzido.com/cubes/Trade%20Flow)
 
 #### Get the definition and members of the *Origin Country* dimension
 
-`/cubes/Trade%20Flow/dimensions/Origin%20Country`
+[`/cubes/Trade%20Flow/dimensions/Origin%20Country`](http://mondrian-rest.jazzido.com//cubes/Trade%20Flow/dimensions/Origin%20Country)
 
 #### Get a member of the *Country* level from the *Origin Country* dimension
 
-`/cubes/Trade%20Flow/dimensions/Origin%20Country/levels/Country/members/arg`
+[`/cubes/Trade%20Flow/dimensions/Origin%20Country/levels/Country/members/arg`](http://mondrian-rest.jazzido.com/cubes/Trade%20Flow/dimensions/Origin%20Country/levels/Country/members/arg)
 
 ## License
 
