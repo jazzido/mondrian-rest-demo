@@ -23,7 +23,7 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
 
 #### World's export value, by year (JSON)
 
-`/cubes/Trade%20Flow/aggregate?drilldown[]=Year&measures[]=Exports`
+[`/cubes/Trade%20Flow/aggregate?drilldown[]=Year&measures[]=Exports`](http://mondrian-rest.jazzido.com/cubes/Trade%20Flow/aggregate?drilldown[]=Year&measures[]=Exports)
 
 #### Argentina's exports and imports value, by year (CSV)
 
