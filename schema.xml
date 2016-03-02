@@ -7,14 +7,14 @@
         </Hierarchy>
     </Dimension>
     <Dimension name="Countries">
-        <Hierarchy hasAll="true" primaryKey="country_id">
+        <Hierarchy hasAll="true" primaryKey="country_id" uniqueKeyLevelName="Country">
             <Table name="countries" schema="oec" />
             <Level name="Continent" column="continent_id" nameColumn="continent" uniqueMembers="true" />
             <Level name="Country" column="country_id" nameColumn="country" uniqueMembers="true" />
         </Hierarchy>
     </Dimension>
     <Dimension name="HS">
-        <Hierarchy hasAll="true" primaryKey="level3">
+        <Hierarchy hasAll="true" primaryKey="level3" uniqueKeyLevelName="HS6">
             <Table name="hs_levels" schema="oec" />
             <Level name="HS2" column="level1" nameColumn="level1_name" uniqueMembers="true" />
             <Level name="HS4" column="level2" nameColumn="level2_name" uniqueMembers="true" />
