@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.setup
 
+require 'rack/config'
 require 'logger'
 
 require 'mondrian_rest'
@@ -22,8 +23,8 @@ PARAMS = {
   catalog: catalog
 }
 
-aggregator = Mondrian::REST::Server.instance
-aggregator.params = PARAMS
-aggregator.connect!
+use Rack::Config do |env|
+  env['mondrian-olap.params'] = PARAMS
+end
 
-run Mondrian::REST::Api.new
+run Mondrian::REST::Api
