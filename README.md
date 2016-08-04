@@ -16,6 +16,10 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
   - Import the dump into your DB: `xzcat oec_dump.sql.xz | mclient -u monetdb -d oec` (this will take a while)
   - If needed, adjust the connection parameters in `config.ru`
   - Run: `rackup`
+  
+## See also
+
+[`mondrian-rest-foodmart`](https://github.com/jazzido/mondrian-rest-foodmart): a similar demo project (easier to setup)
 
 ## Example requests
 
