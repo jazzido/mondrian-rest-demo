@@ -24,8 +24,8 @@
     <Cube name="Trade Flow">
         <Table name="trade_flow" schema="oec" />
         <DimensionUsage name="Year" source="Year" foreignKey="year" />
-        <DimensionUsage name="Origin Country" source="Countries" foreignKey="country_origin" />
-        <DimensionUsage name="Destination Country" source="Countries" foreignKey="country_destination" />
+        <DimensionUsage name="Origin Country" caption="Origin Country" source="Countries" foreignKey="country_origin" />
+        <DimensionUsage name="Destination Country" caption="Destination Country" source="Countries" foreignKey="country_destination" />
         <DimensionUsage name="Product" source="HS" foreignKey="product_id" />
 
         <Measure name="Exports" column="export_value" aggregator="sum" />
