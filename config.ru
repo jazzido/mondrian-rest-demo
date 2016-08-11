@@ -2,6 +2,7 @@ require 'bundler'
 Bundler.setup
 
 require 'rack/config'
+require 'rack/cors'
 require 'logger'
 
 require 'mondrian_rest'
@@ -22,6 +23,13 @@ PARAMS = {
   password: 'monetdb',
   catalog: catalog
 }
+
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: :get
+  end
+end
 
 use Rack::Config do |env|
   env['mondrian-olap.params'] = PARAMS
