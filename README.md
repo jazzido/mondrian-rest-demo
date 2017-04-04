@@ -39,7 +39,7 @@ It implements a simple [OLAP Cube](https://en.wikipedia.org/wiki/OLAP_cube) with
 
 #### Total South America's exports of Live Animals to Germany, by year
 
-[`/cubes/Trade Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin Country.South America&cut[]=Destination Country.Europe.Germany&cut[]=Product.Live Animals`](http://mondrian-rest.jazzido.com/cubes/Trade Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin Country.South America&cut[]=Destination Country.Europe.Germany&cut[]=Product.Live Animals)
+[`/cubes/Trade Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin Country.South America&cut[]=Destination%20Country.Europe.Germany&cut[]=Product.Live%20Animals`](http://mondrian-rest.jazzido.com/cubes/Trade%20Flow/aggregate.csv?drilldown[]=Year&measures[]=Exports&cut[]=Origin%20Country.South%20America&cut[]=Destination%20Country.Europe.Germany&cut[]=Product.Live%020Animals)
 
 ### Metadata
 
